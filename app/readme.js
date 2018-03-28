@@ -6,22 +6,26 @@ const yosay = require('yosay');
 const optionalPrompt = require('./prompt/optional.js');
 
 module.exports = class extends Generator {
+  constructor(args, options) {
+    super(args, options);
+    const requires = ['project_name', 'author', 'description'];
+    this.asks = [];
+    requires.forEach(n => {
+      const Ask = require('./prompt/' + n + '.js');
+      this.asks.push(new Ask(this));
+    });
+  }
+
   prompting() {
     // Have Yeoman greet the user.
     if (!this.options.silent) {
       let name = chalk.red('generator-go-project/readme');
       this.log(yosay(`Welcome to the funkadelic ${name} generator!`));
     }
-    let promises = [
-      './prompt/project_name.js',
-      './prompt/author.js',
-      './prompt/description.js'
-    ].map(n => require(n)(this));
-    return Promise.all(promises).then(prompts =>
-      optionalPrompt(prompts, this).then(props => {
-        this.props = props;
-      })
-    );
+
+    return optionalPrompt(this).then(props => {
+      this.props = props;
+    });
   }
 
   writing() {

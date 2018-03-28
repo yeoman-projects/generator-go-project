@@ -1,28 +1,30 @@
 'use strict';
 
-module.exports = function(prompts, generator) {
-  const props = new Map();
+module.exports = function(generator) {
+  let props = new Map();
 
-  if (!prompts) {
+  if (!generator.asks) {
     return Promise.resolve(props);
   }
 
-  const required = [];
-  prompts.forEach(prompt => {
-    const option = generator.options[prompt.name];
-    if (option === undefined) {
-      required.push(prompt);
-    } else {
-      props[prompt.name] = option;
+  return Promise.all(
+    generator.asks.map(ask => {
+      let option = ask.getOption();
+      return ask.getPrompt().then(prompt => {
+        if (option === undefined) {
+          return prompt;
+        }
+        props[prompt.name] = option;
+      });
+    })
+  ).then(prompts => {
+    let required = prompts.filter(n => Boolean(n));
+    if (required.length) {
+      return generator.prompt(required).then(result => {
+        Object.assign(props, result);
+        return props;
+      });
     }
+    return Promise.resolve(props);
   });
-
-  if (required.length) {
-    return generator.prompt(required).then(result => {
-      Object.assign(props, result);
-      return props;
-    });
-  }
-
-  return Promise.resolve(props);
 };
