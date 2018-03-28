@@ -1,17 +1,14 @@
 'use strict';
 
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
+const Generator = require('../../lib/prompt_generator.js');
 
 module.exports = class extends Generator {
+  constructor(args, options) {
+    super(args, options, 'Makefile', []);
+  }
+
   prompting() {
-    // Have Yeoman greet the user.
-    if (!this.options.silent) {
-      let name = chalk.red('generator-go-project/Makefile');
-      this.log(yosay(`Welcome to the funkadelic ${name} generator!`));
-    }
-    return Promise.resolve(new Map());
+    return super.prompting();
   }
 
   writing() {

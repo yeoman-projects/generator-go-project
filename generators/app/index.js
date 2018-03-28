@@ -1,31 +1,22 @@
 'use strict';
 
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
+const Generator = require('../../lib/prompt_generator.js');
 const path = require('path');
 const mkdir = require('mkdirp');
-const optionalPrompt = require('../../lib/optional.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
-    super(args, options);
-    const requires = ['project_name', 'author', 'description', 'license', 'boilerplate'];
-    this.asks = [];
-    requires.forEach(n => {
-      const Ask = require('../../lib/ask/' + n + '.js');
-      this.asks.push(new Ask(this));
-    });
+    super(args, options, 'app', [
+      'project_name',
+      'author',
+      'description',
+      'license',
+      'boilerplate'
+    ]);
   }
 
   prompting() {
-    // Have Yeoman greet the user.
-    if (!this.options.silent) {
-      let name = chalk.red('generator-go-project');
-      this.log(yosay(`Welcome to the funkadelic ${name} generator!`));
-    }
-
-    return optionalPrompt(this).then(props => {
+    return super.prompting().then(props => {
       let compose = src => {
         this.composeWith(require.resolve(src), props);
       };
