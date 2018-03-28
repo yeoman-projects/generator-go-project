@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
 const mkdir = require('mkdirp');
-const optionalPrompt = require('./prompt/optional.js');
+const optionalPrompt = require('../lib/optional.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {

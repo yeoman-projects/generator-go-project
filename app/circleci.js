@@ -3,7 +3,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const optionalPrompt = require('./prompt/optional.js');
+const optionalPrompt = require('../lib/optional.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
