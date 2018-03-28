@@ -3,7 +3,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const optionalPrompt = require('../lib/optional.js');
+const optionalPrompt = require('../../lib/optional.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
@@ -11,7 +11,7 @@ module.exports = class extends Generator {
     const requires = ['project_name', 'author', 'description'];
     this.asks = [];
     requires.forEach(n => {
-      const Ask = require('../lib/ask/' + n + '.js');
+      const Ask = require('../../lib/ask/' + n + '.js');
       this.asks.push(new Ask(this));
     });
   }
@@ -30,7 +30,7 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath('readme/README.md.ejs'),
+      this.templatePath('README.md.ejs'),
       this.destinationPath('README.md'),
       this.props
     );

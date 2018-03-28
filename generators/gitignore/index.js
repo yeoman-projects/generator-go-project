@@ -8,16 +8,14 @@ module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     if (!this.options.silent) {
-      let name = chalk.red('generator-go-project/Makefile');
+      let name = chalk.red('generator-go-project/gitignore');
       this.log(yosay(`Welcome to the funkadelic ${name} generator!`));
     }
+
     return Promise.resolve(new Map());
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('makefile/Makefile'),
-      this.destinationPath('Makefile')
-    );
+    this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
   }
 };

@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
 const mkdir = require('mkdirp');
-const optionalPrompt = require('../lib/optional.js');
+const optionalPrompt = require('../../lib/optional.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
@@ -13,7 +13,7 @@ module.exports = class extends Generator {
     const requires = ['project_name', 'author', 'description', 'license', 'boilerplate'];
     this.asks = [];
     requires.forEach(n => {
-      const Ask = require('../lib/ask/' + n + '.js');
+      const Ask = require('../../lib/ask/' + n + '.js');
       this.asks.push(new Ask(this));
     });
   }
@@ -31,19 +31,19 @@ module.exports = class extends Generator {
       };
       props.silent = true;
       [
-        './gitignore.js',
-        './readme.js',
-        './makefile.js',
-        './circleci.js',
-        './license.js'
+        '../gitignore/index.js',
+        '../readme/index.js',
+        '../makefile/index.js',
+        '../circleci/index.js',
+        '../license/index.js'
       ].forEach(compose);
       switch (props.boilerplate) {
         case 'CLI':
-          compose('./goreleaser.js');
-          compose('./cli.js');
+          compose('../goreleaser/index.js');
+          compose('../cli/index.js');
           break;
         case 'Library':
-          compose('./lib.js');
+          compose('../lib/index.js');
           break;
         default:
           // Noop

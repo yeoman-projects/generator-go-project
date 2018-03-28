@@ -3,8 +3,8 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const optionalPrompt = require('../lib/optional.js');
-const appendTpl = require('../lib/append_tpl.js');
+const optionalPrompt = require('../../lib/optional.js');
+const appendTpl = require('../../lib/append_tpl.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
@@ -12,7 +12,7 @@ module.exports = class extends Generator {
     const requires = ['project_name', 'author', 'description'];
     this.asks = [];
     requires.forEach(n => {
-      const Ask = require('../lib/ask/' + n + '.js');
+      const Ask = require('../../lib/ask/' + n + '.js');
       this.asks.push(new Ask(this));
     });
   }
@@ -23,7 +23,6 @@ module.exports = class extends Generator {
       let name = chalk.red('generator-go-project/cli');
       this.log(yosay(`Welcome to the funkadelic ${name} generator!`));
     }
-
     return optionalPrompt(this).then(props => {
       this.props = props;
     });
@@ -31,12 +30,21 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath('cli/main.go.ejs'),
-      this.destinationPath('main.go'),
+      this.templatePath('package.go.ejs'),
+      this.destinationPath(this.props.projectName + '.go'),
       this.props
     );
-    appendTpl('cli/README.md.ejs', 'README.md', this.props, this);
-    appendTpl('cli/Makefile.ejs', 'Makefile', this.props, this);
+    this.fs.copyTpl(
+      this.templatePath('doc.go.ejs'),
+      this.destinationPath('doc.go'),
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath('main.go.ejs'), // +build sample
+      this.destinationPath(`cmd/${this.props.projectName}-sample/main.go`),
+      this.props
+    );
+    appendTpl('Makefile.ejs', `Makefile`, this.props, this);
   }
 
   install() {

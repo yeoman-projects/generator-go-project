@@ -3,8 +3,8 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const optionalPrompt = require('../lib/optional.js');
-const appendTpl = require('../lib/append_tpl.js');
+const optionalPrompt = require('../../lib/optional.js');
+const appendTpl = require('../../lib/append_tpl.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
@@ -12,7 +12,7 @@ module.exports = class extends Generator {
     const requires = ['license'];
     this.asks = [];
     requires.forEach(n => {
-      const Ask = require('../lib/ask/' + n + '.js');
+      const Ask = require('../../lib/ask/' + n + '.js');
       this.asks.push(new Ask(this));
     });
   }
@@ -38,6 +38,6 @@ module.exports = class extends Generator {
       license: l
     };
 
-    appendTpl('license/README.md.ejs', 'README.md', data, this);
+    appendTpl('README.md.ejs', 'README.md', data, this);
   }
 };
