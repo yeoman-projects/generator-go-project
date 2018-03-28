@@ -11,7 +11,7 @@ module.exports = class extends Generator {
     const requires = ['project_name', 'author', 'description'];
     this.asks = [];
     requires.forEach(n => {
-      const Ask = require('./prompt/' + n + '.js');
+      const Ask = require('../lib/ask/' + n + '.js');
       this.asks.push(new Ask(this));
     });
   }
