@@ -1,7 +1,6 @@
 'use strict';
 
 const Generator = require('../../lib/prompt_generator.js');
-const appendTpl = require('../../lib/append_tpl.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
@@ -24,11 +23,15 @@ module.exports = class extends Generator {
       this.props
     );
     this.fs.copyTpl(
-      this.templatePath('main.go.ejs'), // +build sample
+      this.templatePath('main.go.ejs'),
       this.destinationPath(`cmd/${this.props.projectName}-sample/main.go`),
       this.props
     );
-    appendTpl('Makefile.ejs', `Makefile`, this.props, this);
+    this.appendTpl(
+      this.templatePath('Makefile.ejs'),
+      this.destinationPath(`Makefile`),
+      this.props
+    );
   }
 
   install() {

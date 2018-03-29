@@ -1,7 +1,6 @@
 'use strict';
 
 const Generator = require('../../lib/prompt_generator.js');
-const appendTpl = require('../../lib/append_tpl.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
@@ -18,8 +17,16 @@ module.exports = class extends Generator {
       this.destinationPath('main.go'),
       this.props
     );
-    appendTpl('README.md.ejs', 'README.md', this.props, this);
-    appendTpl('Makefile.ejs', 'Makefile', this.props, this);
+    this.appendTpl(
+      this.templatePath('README.md.ejs'),
+      this.destinationPath('README.md'),
+      this.props
+    );
+    this.appendTpl(
+      this.templatePath('Makefile.ejs'),
+      this.destinationPath('Makefile'),
+      this.props
+    );
   }
 
   install() {
