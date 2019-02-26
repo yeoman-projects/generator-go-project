@@ -4,7 +4,7 @@ const Generator = require('../../lib/prompt_generator.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
-    super(args, options, 'Makefile', []);
+    super(args, options, 'Makefile', ['boilerplate', 'project_name']);
   }
 
   prompting() {
@@ -12,6 +12,10 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(this.templatePath('Makefile'), this.destinationPath('Makefile'));
+    this.fs.copyTpl(
+      this.templatePath('Makefile.ejs'),
+      this.destinationPath('Makefile'),
+      this.props
+    );
   }
 };

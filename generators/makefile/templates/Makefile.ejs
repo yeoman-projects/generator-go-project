@@ -1,0 +1,25 @@
+.PHONY: gen lint test<% if (boilerplate === 'CLI') { %> install man<% } else if (boilerplate === 'Library') { %> sample<% } %>
+
+VERSION := `git vertag get`
+COMMIT  := `git rev-parse HEAD`
+
+gen:
+	go generate ./...
+
+lint: gen
+	gometalinter ./...
+
+test: lint
+	go test v --race ./...
+<%_ if (boilerplate === 'CLI') { _%>
+
+install: test
+	go install -a -ldflags "-X=main.version=$(VERSION) -X=main.commit=$(COMMIT)" ./...
+
+man: test
+	go run main.go --help-man <%- ">" %> <%- projectName %>.1
+<%_ } else if (boilerplate === 'Library') { _%>
+
+sample:
+	go run -tags=sample ./cmd/<%- projectName %>-sample/main.go
+<%_ } _%>

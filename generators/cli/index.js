@@ -17,20 +17,10 @@ module.exports = class extends Generator {
       this.destinationPath('main.go'),
       this.props
     );
-    this.appendTpl(
-      this.templatePath('README.md.ejs'),
-      this.destinationPath('README.md'),
-      this.props
-    );
-    this.appendTpl(
-      this.templatePath('Makefile.ejs'),
-      this.destinationPath('Makefile'),
-      this.props
-    );
   }
 
   install() {
     console.log('Initializing vendoring');
-    this.spawnCommandSync('dep', ['init']);
+    this.spawnCommandSync('go', ['mod', 'init']);
   }
 };

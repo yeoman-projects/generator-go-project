@@ -1,0 +1,23 @@
+# <%- projectName %>
+
+<%- description %>
+
+## Install
+
+```
+go get github.com/<%- author %>/<%- projectName %>
+```
+<%_ if (boilerplate === 'CLI') { _%>
+
+## Usage
+
+```
+<%- projectName %> --help
+```
+<%_ } _%>
+
+# LICENSE
+
+[![<%- license.name %>](<%- badge %>)](<%- license.url %>)
+
+This is distributed under the [<%- license.name %>](<%- license.url %>).
