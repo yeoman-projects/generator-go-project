@@ -14,7 +14,7 @@ var (
 )
 
 func main() {
-	app := kingpin.New("<%= projectName %>", "<%= description %>").Version(version).Author("<%= author %>")
+	app := kingpin.New("<%- projectName %>", "<%- description %>").Version(version).Author("<%- author %>")
 	switch kingpin.MustParse(app.Parse(os.Args[1:])) {
 	}
 }
