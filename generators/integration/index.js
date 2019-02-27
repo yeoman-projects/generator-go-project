@@ -22,6 +22,10 @@ module.exports = class extends Generator {
       this.destinationPath('.circleci/config.yml'),
       this.props
     );
+    this.fs.copy(
+      this.templatePath('gometalinter.json'),
+      this.destinationPath('.gometalinter.json')
+    );
     if (this.props.boilerplate === 'CLI') {
       this.fs.copyTpl(
         this.templatePath('goreleaser.yml.ejs'),

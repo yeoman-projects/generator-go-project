@@ -26,8 +26,7 @@ module.exports = class extends Generator {
         '../gitignore/index.js',
         '../document/index.js',
         '../integration/index.js',
-        '../makefile/index.js',
-        '../linter/index.js'
+        '../makefile/index.js'
       ].forEach(compose);
       switch (props.boilerplate) {
         case 'CLI':

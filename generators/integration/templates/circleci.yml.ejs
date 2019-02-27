@@ -41,7 +41,7 @@ jobs:
           at: /go
       - run:
           name: search lints
-          command: "<%- "gometalinter --config /etc/gometalinter/config.json ./... | tee >( reviewdog -f=golint -reporter=github-pr-check )" %>"
+          command: "<%- "gometalinter ./... | tee >( reviewdog -f=golint -reporter=github-pr-check )" %>"
 <%_ if (boilerplate === 'CLI') { _%>
 
   release:
