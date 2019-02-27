@@ -13,9 +13,6 @@ jobs:
           name: install
           command: "go install ./..."
       - run:
-          name: go test
-          command: "go test -race ./..."
-      - run:
           name: test and take coverage
           command: |
             mkdir -p .circleci/test/gotest
