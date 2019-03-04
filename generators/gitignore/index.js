@@ -12,6 +12,10 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
+    this.fs.copyTpl(
+      this.templatePath('gitignore.ejs'),
+      this.destinationPath('.gitignore'),
+      this.props
+    );
   }
 };

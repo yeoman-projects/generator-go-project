@@ -1,3 +1,14 @@
+<%_ if (boilerplate === 'CLI') { _%>
+# for goreleaser output with .goreleaser.yml
+/dist
+
+# for man file
+/gogh.1
+
+# go-junit-report output in .circleci/config
+/.circleci/test
+
+<%_ } _%>
 # Binaries for programs and plugins
 *.exe
 *.exe~
