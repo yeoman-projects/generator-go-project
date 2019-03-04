@@ -4,7 +4,7 @@ const Generator = require('../../lib/prompt_generator.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
-    super(args, options, 'gitignore', ['boilerplate']);
+    super(args, options, 'gitignore', ['project_name', 'boilerplate']);
   }
 
   prompting() {
