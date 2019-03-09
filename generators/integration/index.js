@@ -23,8 +23,8 @@ module.exports = class extends Generator {
       this.props
     );
     this.fs.copy(
-      this.templatePath('gometalinter.json'),
-      this.destinationPath('.gometalinter.json')
+      this.templatePath('golangci.yml'),
+      this.destinationPath('.golangci.yml')
     );
     if (this.props.boilerplate === 'CLI') {
       this.fs.copyTpl(
