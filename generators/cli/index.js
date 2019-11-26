@@ -21,6 +21,10 @@ module.exports = class extends Generator {
 
   install() {
     console.log('Initializing vendoring');
-    this.spawnCommandSync('go', ['mod', 'init']);
+    this.spawnCommandSync('go', [
+      'mod',
+      'init',
+      `github.com/${this.props.author}/${this.props.projectName}`
+    ]);
   }
 };
