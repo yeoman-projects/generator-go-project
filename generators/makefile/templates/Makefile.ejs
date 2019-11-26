@@ -16,7 +16,7 @@ test: lint
 install: test
 	go install -a -ldflags "-X=main.version=$(VERSION) -X=main.commit=$(COMMIT)" ./...
 
-man: test
+man:
 	go run main.go --help-man <%- ">" %> <%- projectName %>.1
 <%_ } else if (boilerplate === 'Library') { _%>
 
