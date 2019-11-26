@@ -17,10 +17,17 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(
-      this.templatePath('circleci.yml.ejs'),
-      this.destinationPath('.circleci/config.yml'),
-      this.props
+    this.fs.copy(
+      this.templatePath('github/workflows/deploy.yml'),
+      this.destinationPath('.github/workflows/deploy.yml')
+    );
+    this.fs.copy(
+      this.templatePath('github/workflows/review.yml'),
+      this.destinationPath('.github/workflows/review.yml')
+    );
+    this.fs.copy(
+      this.templatePath('github/workflows/test.yml'),
+      this.destinationPath('.github/workflows/test.yml')
     );
     this.fs.copy(
       this.templatePath('golangci.yml'),
