@@ -18,10 +18,6 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copy(
-      this.templatePath('github/workflows/deploy.yml'),
-      this.destinationPath('.github/workflows/deploy.yml')
-    );
-    this.fs.copy(
       this.templatePath('github/workflows/review.yml'),
       this.destinationPath('.github/workflows/review.yml')
     );
@@ -34,6 +30,10 @@ module.exports = class extends Generator {
       this.destinationPath('.golangci.yml')
     );
     if (this.props.boilerplate === 'CLI') {
+      this.fs.copy(
+        this.templatePath('github/workflows/deploy.yml'),
+        this.destinationPath('.github/workflows/deploy.yml')
+      );
       this.fs.copyTpl(
         this.templatePath('goreleaser.yml.ejs'),
         this.destinationPath('.goreleaser.yml'),
