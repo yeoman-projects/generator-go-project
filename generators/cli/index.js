@@ -24,7 +24,7 @@ module.exports = class extends Generator {
     this.spawnCommandSync('go', [
       'mod',
       'init',
-      `github.com/${this.props.author}/${this.props.projectName}`
+      `github.com/${this.props.author}/${this.props.project_name}`
     ]);
   }
 };

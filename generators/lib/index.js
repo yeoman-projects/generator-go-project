@@ -19,7 +19,7 @@ module.exports = class extends Generator {
     );
     this.fs.copyTpl(
       this.templatePath('main.go.ejs'),
-      this.destinationPath(`cmd/${this.props.projectName}-sample/main.go`),
+      this.destinationPath(`cmd/${this.props.project_name}-sample/main.go`),
       this.props
     );
   }

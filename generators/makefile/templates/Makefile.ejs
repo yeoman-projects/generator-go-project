@@ -17,9 +17,9 @@ install: test
 	go install -a -ldflags "-X=main.version=$(VERSION) -X=main.commit=$(COMMIT)" ./...
 
 man:
-	go run main.go --help-man <%- ">" %> <%- projectName %>.1
+	go run main.go --help-man <%- ">" %> <%- project_name %>.1
 <%_ } else if (project_type === 'Library') { _%>
 
 sample:
-	go run -tags=sample ./cmd/<%- projectName %>-sample/main.go
+	go run -tags=sample ./cmd/<%- project_name %>-sample/main.go
 <%_ } _%>
