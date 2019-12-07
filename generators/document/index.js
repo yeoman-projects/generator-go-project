@@ -6,10 +6,10 @@ const lic = require('../../lib/lic');
 module.exports = class extends Generator {
   constructor(args, options) {
     super(args, options, 'document', [
-      'project_name',
+      'name',
       'author',
       'description',
-      'project_type',
+      'type',
       'publication',
       'license'
     ]);
@@ -28,7 +28,7 @@ module.exports = class extends Generator {
         this.props.license,
         this.props.publication,
         this.props.author,
-        this.props.project_name
+        this.props.name
       )
     );
 

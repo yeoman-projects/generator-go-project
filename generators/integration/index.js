@@ -4,12 +4,7 @@ const Generator = require('../../lib/prompt_generator.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
-    super(args, options, 'integration', [
-      'project_name',
-      'author',
-      'description',
-      'project_type'
-    ]);
+    super(args, options, 'integration', ['name', 'author', 'description', 'type']);
   }
 
   prompting() {
@@ -29,7 +24,7 @@ module.exports = class extends Generator {
       this.templatePath('golangci.yml'),
       this.destinationPath('.golangci.yml')
     );
-    if (this.props.project_type === 'CLI') {
+    if (this.props.type === 'CLI') {
       this.fs.copy(
         this.templatePath('github/workflows/deploy.yml'),
         this.destinationPath('.github/workflows/deploy.yml')

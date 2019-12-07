@@ -1,9 +1,9 @@
-<%_ if (project_type === 'CLI') { _%>
+<%_ if (type === 'CLI') { _%>
 # for goreleaser output with .goreleaser.yml
 /dist
 
 # for man file
-/<%- project_name %>.1
+/<%- name %>.1
 
 <%_ } _%>
 # Binaries for programs and plugins

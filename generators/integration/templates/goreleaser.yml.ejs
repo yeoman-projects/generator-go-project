@@ -1,17 +1,17 @@
-project_name: <%- project_name %>
+project_name: <%- name %>
 release:
   github:
     owner: <%- author %>
-    name: <%- project_name %>
+    name: <%- name %>
 brews:
 - install: |
-    bin.install "<%- project_name %>"
-    man1.install "<%- project_name %>.1"
+    bin.install "<%- name %>"
+    man1.install "<%- name %>.1"
   github:
     owner: <%- author %>
     name: homebrew-tap
   folder: Formula
-  homepage: https://github.com/<%- author %>/<%- project_name %>
+  homepage: https://github.com/<%- author %>/<%- name %>
   description: <%- description %>
 builds:
 - goos:
@@ -23,7 +23,7 @@ builds:
   - "386"
   main: .
   ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
-  binary: <%- project_name %>
+  binary: <%- name %>
   hooks:
     pre: make man
 archives:
@@ -42,6 +42,6 @@ archives:
   - README*
   - changelog*
   - CHANGELOG*
-  - <%- project_name %>.1
+  - <%- name %>.1
 snapshot:
   name_template: SNAPSHOT-{{ .Commit }}

@@ -6,12 +6,12 @@ const mkdir = require('mkdirp');
 module.exports = class extends Generator {
   constructor(args, options) {
     super(args, options, 'app', [
-      'project_name',
+      'name',
       'author',
       'description',
       'license',
       'publication',
-      'project_type',
+      'type',
       'dir'
     ]);
   }
@@ -29,7 +29,7 @@ module.exports = class extends Generator {
         '../integration/index.js',
         '../makefile/index.js'
       ].forEach(compose);
-      switch (props.project_type) {
+      switch (props.type) {
         case 'CLI':
           compose('../cli/index.js');
           break;

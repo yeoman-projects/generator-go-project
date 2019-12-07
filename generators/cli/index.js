@@ -4,7 +4,7 @@ const Generator = require('../../lib/prompt_generator.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
-    super(args, options, 'cli', ['project_name', 'author', 'description']);
+    super(args, options, 'cli', ['name', 'author', 'description']);
   }
 
   prompting() {
@@ -24,7 +24,7 @@ module.exports = class extends Generator {
     this.spawnCommandSync('go', [
       'mod',
       'init',
-      `github.com/${this.props.author}/${this.props.project_name}`
+      `github.com/${this.props.author}/${this.props.name}`
     ]);
   }
 };

@@ -1,21 +1,21 @@
-# <%- project_name %>
+# <%- name %>
 
 <%- description %>
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/<%- author %>/<%- project_name %>)](https://goreportcard.com/report/github.com/<%- author %>/<%- project_name %>)
-[![Coverage Status](https://img.shields.io/codecov/c/github/<%- author %>/<%- project_name %>.svg)](https://codecov.io/gh/<%- author %>/<%- project_name %>)
+[![Go Report Card](https://goreportcard.com/badge/github.com/<%- author %>/<%- name %>)](https://goreportcard.com/report/github.com/<%- author %>/<%- name %>)
+[![Coverage Status](https://img.shields.io/codecov/c/github/<%- author %>/<%- name %>.svg)](https://codecov.io/gh/<%- author %>/<%- name %>)
 
 ## Install
 
 ```
-go get github.com/<%- author %>/<%- project_name %>
+go get github.com/<%- author %>/<%- name %>
 ```
-<%_ if (project_type === 'CLI') { _%>
+<%_ if (type === 'CLI') { _%>
 
 ## Usage
 
 ```
-<%- project_name %> --help
+<%- name %> --help
 ```
 <%_ } _%>
 

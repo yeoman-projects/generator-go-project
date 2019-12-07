@@ -4,7 +4,7 @@ const Generator = require('../../lib/prompt_generator.js');
 
 module.exports = class extends Generator {
   constructor(args, options) {
-    super(args, options, 'cli', ['project_name', 'author', 'description']);
+    super(args, options, 'cli', ['name', 'author', 'description']);
   }
 
   prompting() {
@@ -19,7 +19,7 @@ module.exports = class extends Generator {
     );
     this.fs.copyTpl(
       this.templatePath('main.go.ejs'),
-      this.destinationPath(`cmd/${this.props.project_name}-sample/main.go`),
+      this.destinationPath(`cmd/${this.props.name}-sample/main.go`),
       this.props
     );
   }
