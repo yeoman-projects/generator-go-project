@@ -10,7 +10,7 @@ module.exports = class extends Generator {
       'author',
       'description',
       'license',
-      'boilerplate',
+      'project_type',
       'dir'
     ]);
   }
@@ -28,7 +28,7 @@ module.exports = class extends Generator {
         '../integration/index.js',
         '../makefile/index.js'
       ].forEach(compose);
-      switch (props.boilerplate) {
+      switch (props.project_type) {
         case 'CLI':
           compose('../cli/index.js');
           break;

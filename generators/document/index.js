@@ -9,7 +9,7 @@ module.exports = class extends Generator {
       'project_name',
       'author',
       'description',
-      'boilerplate',
+      'project_type',
       'license'
     ]);
   }

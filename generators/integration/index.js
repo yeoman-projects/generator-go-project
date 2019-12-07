@@ -8,7 +8,7 @@ module.exports = class extends Generator {
       'project_name',
       'author',
       'description',
-      'boilerplate'
+      'project_type'
     ]);
   }
 
@@ -29,7 +29,7 @@ module.exports = class extends Generator {
       this.templatePath('golangci.yml'),
       this.destinationPath('.golangci.yml')
     );
-    if (this.props.boilerplate === 'CLI') {
+    if (this.props.project_type === 'CLI') {
       this.fs.copy(
         this.templatePath('github/workflows/deploy.yml'),
         this.destinationPath('.github/workflows/deploy.yml')
