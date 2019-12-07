@@ -10,6 +10,7 @@ module.exports = class extends Generator {
       'author',
       'description',
       'license',
+      'publication',
       'project_type',
       'dir'
     ]);

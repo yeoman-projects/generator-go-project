@@ -1,7 +1,7 @@
 'use strict';
 
-const fulLics = require('spdx-license-list/full');
 const Generator = require('../../lib/prompt_generator.js');
+const lic = require('../../lib/lic');
 
 module.exports = class extends Generator {
   constructor(args, options) {
@@ -10,6 +10,7 @@ module.exports = class extends Generator {
       'author',
       'description',
       'project_type',
+      'publication',
       'license'
     ]);
   }
@@ -20,16 +21,23 @@ module.exports = class extends Generator {
 
   writing() {
     const merge = Object.assign;
-    const id = this.props.license;
-    let license = merge({}, fulLics[id], { id });
 
-    this.fs.write(this.destinationPath('LICENSE'), license.licenseText);
-    let badgeId = encodeURIComponent(license.id).replace('-', '--');
+    this.fs.write(
+      this.destinationPath('LICENSE'),
+      lic.note(
+        this.props.license,
+        this.props.publication,
+        this.props.author,
+        this.props.project_name
+      )
+    );
+
+    let badgeId = encodeURIComponent(this.props.license).replace('-', '--');
     this.props.badge = `http://img.shields.io/badge/license-${badgeId}-blue.svg`;
     this.fs.copyTpl(
       this.templatePath('README.md.ejs'),
       this.destinationPath('README.md'),
-      merge({}, this.props, { license })
+      merge({}, this.props, { license: lic.get(this.props.license) })
     );
   }
 };
