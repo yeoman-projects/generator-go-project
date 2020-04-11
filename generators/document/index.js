@@ -11,7 +11,7 @@ module.exports = class extends Generator {
       'description',
       'type',
       'publication',
-      'license'
+      'license',
     ]);
   }
 

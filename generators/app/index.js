@@ -12,13 +12,13 @@ module.exports = class extends Generator {
       'license',
       'publication',
       'type',
-      'dir'
+      'dir',
     ]);
   }
 
   prompting() {
-    return super.prompting().then(props => {
-      let compose = src => {
+    return super.prompting().then((props) => {
+      let compose = (src) => {
         this.composeWith(require.resolve(src), props);
       };
 
@@ -27,7 +27,7 @@ module.exports = class extends Generator {
         '../gitignore/index.js',
         '../document/index.js',
         '../integration/index.js',
-        '../makefile/index.js'
+        '../makefile/index.js',
       ].forEach(compose);
       switch (props.type) {
         case 'CLI':
