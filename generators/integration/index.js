@@ -26,8 +26,8 @@ module.exports = class extends Generator {
     );
     if (this.props.type === 'CLI') {
       this.fs.copy(
-        this.templatePath('github/workflows/deploy.yml'),
-        this.destinationPath('.github/workflows/deploy.yml')
+        this.templatePath('github/workflows/release.yml'),
+        this.destinationPath('.github/workflows/release.yml')
       );
       this.fs.copyTpl(
         this.templatePath('goreleaser.yml.ejs'),

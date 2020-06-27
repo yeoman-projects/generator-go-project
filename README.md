@@ -25,7 +25,7 @@ yo go-project
 
 ## License
 
-MIT © [Kyoichiro Yamada](https://kyoh.net)
+MIT © [Kyoichiro Yamada](https://kyoh86.dev)
 
 
 [npm-image]: https://badge.fury.io/js/generator-go-project.svg
