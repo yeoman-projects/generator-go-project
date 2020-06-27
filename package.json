@@ -1,13 +1,14 @@
 {
-  "name": "generator-go-project",
+  "name": "@kyoh86/generator-go-project",
   "version": "1.4.9",
   "description": "A Yeoman generator to scaffold golang project.",
   "homepage": "https://github.com/kyoh86/generator-go-project",
   "author": {
-    "name": "Kyoichiro Yamada",
-    "email": "chili.pepper86@gmail.com",
-    "url": "https://kyoh.net"
+    "name": "kyoh86",
+    "email": "me@kyoh86.dev",
+    "url": "https://kyoh86.dev"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "files": [
     "generators",
     "lib"
