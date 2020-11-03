@@ -1,25 +1,31 @@
-.PHONY: gen lint test<% if (type === 'CLI') { %> install man<% } else if (type === 'Library') { %> sample<% } %>
-
 VERSION := `git vertag get`
 COMMIT  := `git rev-parse HEAD`
 
+generate: gen
+.PHONY: generate
 gen:
 	go generate ./...
+.PHONY: gen
 
 lint: gen
 	golangci-lint run
+.PHONY: lint
 
 test: lint
 	go test -v --race ./...
+.PHONY: test
 <%_ if (type === 'CLI') { _%>
 
 install: test
 	go install -a -ldflags "-X=main.version=$(VERSION) -X=main.commit=$(COMMIT)" ./...
+.PHONY: install
 
 man:
 	go run . --help-man <%- ">" %> <%- name %>.1
+.PHONY: man
 <%_ } else if (type === 'Library') { _%>
 
 sample:
 	go run -tags=sample ./cmd/<%- name %>-sample/main.go
+.PHONY: sample
 <%_ } _%>
