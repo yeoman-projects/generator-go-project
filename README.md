@@ -1,4 +1,4 @@
-# generator-go-project [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# generator-go-project [![NPM version][npm-image]][npm-url]
 > A Yeoman generator to scaffold golang project.
 
 ## Installation
@@ -25,12 +25,8 @@ yo go-project
 
 ## License
 
-MIT © [Kyoichiro Yamada](https://kyoh86.dev)
+MIT © [kyoh86](https://kyoh86.dev)
 
 
 [npm-image]: https://badge.fury.io/js/generator-go-project.svg
 [npm-url]: https://npmjs.org/package/generator-go-project
-[daviddm-image]: https://david-dm.org/kyoh86/generator-go-project.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/kyoh86/generator-go-project
-[coveralls-image]: https://coveralls.io/repos/kyoh86/generator-go-project/badge.svg
-[coveralls-url]: https://coveralls.io/r/kyoh86/generator-go-project

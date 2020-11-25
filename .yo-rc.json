@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "kyoh86",
+      "authorEmail": "me@kyoh86.dev",
+      "authorUrl": "https://kyoh86.dev"
+    }
+  }
+}

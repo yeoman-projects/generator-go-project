@@ -1,0 +1,38 @@
+brews:
+  - install: |
+      bin.install "<%- name %>"
+      man1.install "<%- name %>.1"
+    tap:
+      owner: <%- author %>
+      name: homebrew-tap
+    folder: Formula
+    homepage: https://github.com/<%- author %>/<%- name %>
+    description: <%- description %>
+builds:
+  - goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm
+      - arm64
+      - "386"
+    hooks:
+      post: make man
+archives:
+  - id: gzip
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - licence*
+      - LICENCE*
+      - license*
+      - LICENSE*
+      - readme*
+      - README*
+      - changelog*
+      - CHANGELOG*
+      - <%- name %>.1
