@@ -1,5 +1,6 @@
-# generator-go-project [![NPM version][npm-image]][npm-url]
-> A Yeoman generator to scaffold golang project.
+# @kyoh86/generator-go-project
+
+A Yeoman generator to scaffold golang project.
 
 ## Installation
 
@@ -7,7 +8,7 @@ First, install [Yeoman](http://yeoman.io) and generator-go-project using [npm](h
 
 ```bash
 npm install -g yo
-npm install -g generator-go-project
+npm install -g @kyoh86/generator-go-project
 ```
 
 Then generate your new project:
@@ -26,7 +27,3 @@ yo go-project
 ## License
 
 MIT © [kyoh86](https://kyoh86.dev)
-
-
-[npm-image]: https://badge.fury.io/js/generator-go-project.svg
-[npm-url]: https://npmjs.org/package/generator-go-project
