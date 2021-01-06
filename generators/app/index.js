@@ -4,11 +4,9 @@ const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
 const path = require("path");
-const license = require("license");
+const license = require("./license");
 
-module.exports = class extends (
-  Generator
-) {
+module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
