@@ -1,6 +1,6 @@
 {
   "name": "@kyoh86/generator-go-project",
-  "version": "1.4.12",
+  "version": "1.4.13",
   "description": "A Yeoman generator to scaffold golang project.",
   "homepage": "https://github.com/kyoh86/generator-go-project",
   "author": {
